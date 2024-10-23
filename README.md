@@ -66,7 +66,9 @@ NewsKing/
 ├── src/
 │   ├── components/
 │   │   ├── NavBar.js
+|   |   ├── NewsItem.js
 │   │   ├── News.js
+|   |   ├── LoadingGif.js
 │   ├── App.js
 │   └── index.js
 ├── package.json
