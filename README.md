@@ -5,17 +5,17 @@
 
 ## Features
 
-- Fetches live news data from the NewsAPI.
+- Fetches live news data from the ```NewsAPI```.
 - Categories include: ```Business```, ```Entertainment```, ```Health```, ```Science```, ```Sports```, ```Technology```, and ```General```.
 - Simple and clean user interface.
 - Responsive design for desktop and mobile devices.
 
 ## Technologies Used
 
-- **React**: Frontend library for building the UI.
-- **React Router**: For client-side routing.
-- **Bootstrap**: For responsive design and layout.
-- **NewsAPI**: To fetch live news data.
+- **```React```**: Frontend library for building the UI.
+- **```React Router```**: For client-side routing.
+- **```Bootstrap```**: For responsive design and layout.
+- **```NewsAPI```**: To fetch live news data.
 
 ## How to Run Locally
 
