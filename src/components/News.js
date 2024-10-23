@@ -21,6 +21,7 @@ export class News extends Component {
 			articles: [],
 			page: 1,
 			loading: false,
+			totalResults: 0,
 		};
 	}
 	async componentDidMount() {
@@ -87,22 +88,34 @@ export class News extends Component {
 				</h1>
 				{this.state.loading && <LoadingGif />}
 				<div className="row">
-					{this.state.articles.map((element) => {
-						return (
-							<div className="col-md-4" key={element.url}>
-								<NewsItem
-									title={element.title ? element.title : ""}
-									description={element.description ? element.description : ""}
-									urlToImage={
-										element.urlToImage
-											? element.urlToImage
-											: "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
-									}
-									url={element.url}
-								/>
-							</div>
-						);
-					})}
+					{Array.isArray(this.state.articles) &&
+					this.state.articles.length > 0 ? (
+						this.state.articles.map((element) => {
+							if (element.url !== "https://removed.com") {
+								return (
+									<div className="col-md-4" key={element.url}>
+										<NewsItem
+											title={element.title ? element.title : ""}
+											description={
+												element.description ? element.description : ""
+											}
+											urlToImage={
+												element.urlToImage ||
+												"https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+											}
+											url={element.url}
+											author={element.author}
+											date={element.publishedAt}
+											source={element.source.name}
+										/>
+									</div>
+								);
+							}
+							return null;
+						})
+					) : (
+						<p>No articles available at the moment.</p>
+					)}
 				</div>
 				<div className="d-flex justify-content-between my-3">
 					<button
@@ -112,7 +125,6 @@ export class News extends Component {
 						disabled={this.state.page <= 1}>
 						&larr; Previous
 					</button>
-					{/* {this.state.loading && <LoadingGif />} */}
 					<button
 						type="button"
 						className="btn btn-warning"
