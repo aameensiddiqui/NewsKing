@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 export class News extends Component {
 	static defaultProps = {
-		pageSize: 6,
+		pageSize: 15,
 		country: "us",
 		category: "general",
 	};
@@ -15,22 +15,28 @@ export class News extends Component {
 		country: PropTypes.string,
 		category: PropTypes.string,
 	};
-	constructor() {
-		super();
+	capitalizeFirstLetter = (string) => {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	};
+	constructor(props) {
+		super(props);
 		this.state = {
 			articles: [],
 			page: 1,
 			loading: false,
 			totalResults: 0,
 		};
+		document.title = `NewsKing - ${this.capitalizeFirstLetter(
+			this.props.category
+		)}`;
 	}
-	async componentDidMount() {
-		// <LoadingGif />;
-		let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=1&pageSize=${this.props.pageSize}`;
+
+	async updateNews() {
+		const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 		this.setState({ loading: true });
 		let data = await fetch(url);
 		let parsedData = await data.json();
-		// console.log(parsedData);
+		console.log(parsedData);
 		this.setState({
 			articles: parsedData.articles,
 			totalResults: parsedData.totalResults,
@@ -38,53 +44,33 @@ export class News extends Component {
 		});
 	}
 
+	async componentDidMount() {
+		this.updateNews();
+	}
+
 	handleNext = async () => {
-		if (
-			!(
-				this.state.page + 1 >
-				Math.ceil(this.state.totalResults / this.props.pageSize)
-			)
-		) {
-			let url = `https://newsapi.org/v2/top-headlines?country=${
-				this.props.country
-			}&category=${
-				this.props.category
-			}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=${
-				this.state.page + 1
-			}&pageSize=${this.props.pageSize}`;
-			this.setState({ loading: true });
-			let data = await fetch(url);
-			let parsedData = await data.json();
-			this.setState({
-				page: this.state.page + 1,
-				articles: parsedData.articles,
-				loading: false,
-			});
-		}
+		this.setState(
+			(prevState) => ({ page: prevState.page + 1 }),
+			() => this.updateNews()
+		);
 	};
-	handlePrev = async () => {
-		let url = `https://newsapi.org/v2/top-headlines?country=${
-			this.props.country
-		}&category=${
-			this.props.category
-		}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=${
-			this.state.page - 1
-		}&pageSize=${this.props.pageSize}`;
-		this.setState({ loading: true });
-		let data = await fetch(url);
-		let parsedData = await data.json();
-		this.setState({
-			page: this.state.page - 1,
-			articles: parsedData.articles,
-			loading: false,
-		});
+	handlePrev = async (prevState) => {
+		this.setState(
+			(prevState) => ({ page: prevState.page - 1 }),
+			() => this.updateNews()
+		);
 	};
 
 	render() {
 		return (
 			<div className="container my-3">
-				<h1 style={{ display: "flex", justifyContent: "center" }}>
-					Top Headlines
+				<h1
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						margin: "35px 0px",
+					}}>
+					Top Headlines on {this.capitalizeFirstLetter(this.props.category)}
 				</h1>
 				{this.state.loading && <LoadingGif />}
 				<div className="row">
@@ -99,10 +85,7 @@ export class News extends Component {
 											description={
 												element.description ? element.description : ""
 											}
-											urlToImage={
-												element.urlToImage ||
-												"https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
-											}
+											urlToImage={element.urlToImage || "/default.png"}
 											url={element.url}
 											author={element.author}
 											date={element.publishedAt}
@@ -114,7 +97,7 @@ export class News extends Component {
 							return null;
 						})
 					) : (
-						<p>No articles available at the moment.</p>
+						<p>Loading....</p>
 					)}
 				</div>
 				<div className="d-flex justify-content-between my-3">

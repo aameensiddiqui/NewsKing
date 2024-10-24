@@ -25,12 +25,12 @@ export class NewsItem extends Component {
 						<p className="card-text">
 							<b>{description}</b>
 						</p>
-						<p className="card-text">
+						<div className="card-text">
 							<small className="text-body-secondary">
 								<b>{author ? author : "Unknown"}</b>{" "}
 								<p>{new Date(date).toUTCString()}</p>
 							</small>
-						</p>
+						</div>
 						<a href={url} target="blank" className="btn btn-sm btn-primary">
 							Read more
 						</a>
