@@ -7,14 +7,14 @@ export class NewsItem extends Component {
 		return (
 			<div
 				style={{
-					display: "flex", // Flexbox to center the card
-					justifyContent: "center", // Center horizontally
-					marginTop: "20px", // Optional margin for spacing from the top
+					display: "flex",
+					justifyContent: "center",
+					marginTop: "20px",
 				}}>
 				<div className="card">
 					<span
-						className="position-absolute top-0 translate-middle badge rounded-pill bg-danger"
-						style={{ zIndex: 1, left: "85%", fontSize: "14px" }}>
+						className="position-absolute top-0 translate-middle badge rounded bg-primary text-light"
+						style={{ zIndex: 1, left: "90%", fontSize: "13px" }}>
 						{source}
 					</span>
 					<img src={urlToImage} className="card-img-top" alt="..." />
@@ -22,8 +22,8 @@ export class NewsItem extends Component {
 						<h5 className="card-title">
 							<b>{title}</b>
 						</h5>
-						<p className="card-text">
-							<b>{description}</b>
+						<p className="card-text" style={{ fontSize: "20px" }}>
+							{description}
 						</p>
 						<div className="card-text">
 							<small className="text-body-secondary">
