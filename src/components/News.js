@@ -33,7 +33,7 @@ export class News extends Component {
 	}
 
 	async updateNews() {
-		const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+		const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 		this.setState({ loading: true });
 		let data = await fetch(url);
 		let parsedData = await data.json();
@@ -42,27 +42,38 @@ export class News extends Component {
 			totalResults: parsedData.totalResults,
 			loading: false,
 		});
+		const incrementProgress = () => {
+			for (let progress = 1; progress <= 100; progress++) {
+				setTimeout(() => {
+					this.props.setProgress(progress);
+				}, progress * 30);
+			}
+		};
+		incrementProgress();
 	}
 
 	fetchMoreData = async () => {
 		if (this.state.loading) {
 			return;
 		}
-		this.setState({ page: this.state.page + 1 });
 		const url = `https://newsapi.org/v2/top-headlines?country=${
 			this.props.country
-		}&category=${
-			this.props.category
-		}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=${
+		}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${
 			this.state.page + 1
 		}&pageSize=${this.props.pageSize}`;
-		let data = await fetch(url);
-		let parsedData = await data.json();
-		this.setState({
-			articles: this.state.articles.concat(parsedData.articles),
-			totalResults: parsedData.totalResults,
-			loading: false,
-		});
+		this.setState({ page: this.state.page + 1 });
+		try {
+			let data = await fetch(url);
+			let parsedData = await data.json();
+			this.setState({
+				articles: this.state.articles.concat(parsedData.articles),
+				totalResults: parsedData.totalResults,
+				loading: false,
+			});
+		} catch (error) {
+			console.error("Failed to fetch the news...", error);
+			this.setState({ loading: false });
+		}
 	};
 
 	async componentDidMount() {
@@ -76,10 +87,12 @@ export class News extends Component {
 					style={{
 						display: "flex",
 						justifyContent: "center",
-						margin: "35px 0px",
-						fontSize: "50px",
+						margin: "25px 0px",
+						marginTop: "80px",
+						fontSize: "35px",
+						color: this.props.theme === "light" ? "black" : "white",
 					}}>
-					Top Headlines on {this.capitalizeFirstLetter(this.props.category)}
+					Top Headlines from {this.capitalizeFirstLetter(this.props.category)}
 				</h1>
 				{this.state.loading && <LoadingGif />}
 
@@ -91,24 +104,27 @@ export class News extends Component {
 					<div className="container">
 						<div className="row">
 							{this.state.articles.map((element) => {
-								if (element.url !== "https://removed.com") {
-									return (
-										<div className="col-md-4" key={element.url}>
-											<NewsItem
-												title={element.title ? element.title : ""}
-												description={
-													element.description ? element.description : ""
-												}
-												urlToImage={element.urlToImage || "/default.png"}
-												url={element.url}
-												author={element.author}
-												date={element.publishedAt}
-												source={element.source.name}
-											/>
-										</div>
-									);
+								if (element.url === "https://removed.com") {
+									return null;
 								}
-								return <p>null...</p>;
+								return (
+									<div
+										className="col-md-4"
+										key={`${element.source.name}-${element.publishedAt}-${element.url}`}>
+										<NewsItem
+											title={element.title ? element.title : ""}
+											description={
+												element.description ? element.description : ""
+											}
+											urlToImage={element.urlToImage || "/default.png"}
+											url={element.url}
+											author={element.author}
+											date={element.publishedAt}
+											source={element.source.name}
+											theme={this.props.theme}
+										/>
+									</div>
+								);
 							})}
 						</div>
 					</div>

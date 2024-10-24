@@ -2,19 +2,44 @@ import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
+	apiKey = process.env.REACT_APP_NEWS_API;
+	state = { theme: "light", progress: 0 };
+	setProgress = (progress) => {
+		this.setState({ progress: progress });
+	};
+	toggleTheme = () => {
+		this.setState(
+			(prevState) => ({
+				theme: prevState.theme === "light" ? "dark" : "light",
+			}),
+			() => {
+				if (this.state.theme === "dark") {
+					document.body.style.backgroundColor = "rgb(43 43 48)";
+				} else {
+					document.body.style.backgroundColor = "white";
+				}
+			}
+		);
+	};
 	render() {
 		return (
 			<div>
 				<Router>
-					<Navbar />
+					<Navbar theme={this.state.theme} toggleTheme={this.toggleTheme} />
+					<LoadingBar height={3} color="blue" progress={this.state.progress} />
 					<Routes>
 						<Route
 							path="/"
 							element={
 								<News
 									key="general"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="general"
@@ -26,6 +51,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="business"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="business"
@@ -37,6 +66,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="entertainment"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="entertainment"
@@ -48,6 +81,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="general"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="general"
@@ -59,6 +96,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="health"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="health"
@@ -70,6 +111,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="science"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="science"
@@ -81,6 +126,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="sports"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="sports"
@@ -92,6 +141,10 @@ export default class App extends Component {
 							element={
 								<News
 									key="technology"
+									setProgress={this.setProgress}
+									apiKey={this.apiKey}
+									toggleTheme={this.toggleTheme}
+									theme={this.state.theme}
 									pageSize={15}
 									country="us"
 									category="technology"

@@ -11,26 +11,30 @@ export class NewsItem extends Component {
 					justifyContent: "center",
 					marginTop: "20px",
 				}}>
-				<div className="card">
+				<div className="card" style={{ border: "none" }}>
 					<span
-						className="position-absolute top-0 translate-middle badge rounded bg-primary text-light"
-						style={{ zIndex: 1, left: "90%", fontSize: "13px" }}>
+						className="position-absolute top-0 translate badge rounded bg-primary text-light"
+						style={{ zIndex: 1, right: "0%", fontSize: "13px" }}>
 						{source}
 					</span>
 					<img src={urlToImage} className="card-img-top" alt="..." />
-					<div className="card-body">
+					<div
+						className="card-body"
+						style={{
+							color: this.props.theme === "light" ? "black" : "white",
+							backgroundColor:
+								this.props.theme === "light"
+									? "rgb(231 231 231)"
+									: "rgb(31 31 35)",
+						}}>
 						<h5 className="card-title">
 							<b>{title}</b>
 						</h5>
-						<p className="card-text" style={{ fontSize: "20px" }}>
+						<p className="card-text" style={{ fontSize: "15px" }}>
 							{description}
 						</p>
-						<div className="card-text">
-							<small className="text-body-secondary">
-								<b>{author ? author : "Unknown"}</b>{" "}
-								<p>{new Date(date).toUTCString()}</p>
-							</small>
-						</div>
+						<b>{author ? author : "Unknown"}</b>{" "}
+						<p style={{ fontSize: "13px" }}>{new Date(date).toUTCString()}</p>
 						<a href={url} target="blank" className="btn btn-sm btn-primary">
 							Read more
 						</a>

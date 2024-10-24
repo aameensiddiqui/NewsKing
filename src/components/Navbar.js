@@ -5,12 +5,10 @@ export class Navbar extends Component {
 	render() {
 		return (
 			<nav
-				className="navbar navbar-expand-lg bg-body-tertiary"
-				style={{ height: "80px", padding: "20px" }}>
-				<div
-					className="container-fluid"
-					style={{ fontSize: "20px", fontWeight: "bold" }}>
-					<Link className="navbar-brand" to="/" style={{ fontSize: "30px" }}>
+				className={`navbar navbar-expand-lg fixed-top navbar-${this.props.theme} bg-${this.props.theme}`}
+				style={{ height: "60px", padding: "20px" }}>
+				<div className="container-fluid" style={{ fontSize: "18px" }}>
+					<Link className="navbar-brand" to="/" style={{ fontSize: "25px" }}>
 						NewsKing
 					</Link>
 					<button
@@ -67,6 +65,20 @@ export class Navbar extends Component {
 							</li>
 						</ul>
 					</div>
+					<img
+						src={
+							this.props.theme === "dark"
+								? "/contrast (1).png"
+								: "/dark-mode.png"
+						}
+						alt="Toggle Theme"
+						onClick={this.props.toggleTheme}
+						style={{
+							width: "40px",
+							height: "40px",
+							cursor: "pointer",
+						}}
+					/>
 				</div>
 			</nav>
 		);
