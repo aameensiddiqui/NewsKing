@@ -39,15 +39,10 @@ To run this project locally on your machine:
     npm install
     ```
 
-4. Generate your API key from [NewsAPI](https://newsapi.org). Replace my API key with yours:
+4. Generate your API key from [NewsAPI](https://newsapi.org). Replace my API key with yours in  ```.env.public``` file:
 
-    ```News.js```
     ```bash
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=cbedc4d03a6940258ab91a7e4e4b3a15&page=1&pageSize=${this.props.pageSize}`;
-    ```
-    ```Replace the apikey```
-    ```bash
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=...........&page=1&pageSize=${this.props.pageSize}`;
+   REACT_APP_NEWS_API="......Paste your API key here......"
     ```
 
 5. Start the application:
@@ -72,5 +67,6 @@ NewsKing/
 │   ├── App.js
 │   └── index.js
 ├── package.json
+├── .env.public
 └── README.md
 ```
