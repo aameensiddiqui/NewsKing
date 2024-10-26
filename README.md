@@ -18,12 +18,13 @@
 - **```NewsAPI```**: To fetch live news data.
 
 ## Screenshots
-
+![lightMode 6](https://github.com/user-attachments/assets/37ac8171-ba3c-43d8-825b-e9c439e1c2d7)
 ![lightMode 1](https://github.com/user-attachments/assets/a530841d-b48a-4da8-9b6e-ef7bab9b182a)
 ![lightMode 2](https://github.com/user-attachments/assets/d14227e6-dd0c-43cf-b76c-c471beb07b72)
 ![lightMode 3](https://github.com/user-attachments/assets/43870f8f-de79-4dfe-a794-2db901320ecf)
 ![lightMode 5](https://github.com/user-attachments/assets/f01524bc-e783-4208-832f-8bf112a1223e)
 ![darkMode 5](https://github.com/user-attachments/assets/502e1475-087a-4163-9d66-cc400f6d31d8)
+![darkMode 6](https://github.com/user-attachments/assets/df75610a-986b-4769-97b6-64691c24240c)
 ![darkMode 3](https://github.com/user-attachments/assets/043cde4a-7fa5-4f47-8bff-303185aa2a23)
 ![darkMode 1](https://github.com/user-attachments/assets/5d0421d9-3403-4f1b-b921-02fe0b783e75)
 ![darkMode 2](https://github.com/user-attachments/assets/f9ffcb6c-4676-401b-8978-7983a6b2f2ab)
@@ -52,7 +53,7 @@ To run this project locally on your machine:
     npm install
     ```
 
-4. Generate your API key from [NewsAPI](https://newsapi.org). Create a ```.env.public``` file outside src in project file & replace my API key with yours:
+4. Generate your API key from [NewsAPI](https://newsapi.org). Create a ```.env.public``` file outside src in project dir & replace my API key with yours:
 
     ```bash
    REACT_APP_NEWS_API="......Paste your API key here......"
