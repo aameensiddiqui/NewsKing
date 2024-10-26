@@ -52,7 +52,7 @@ To run this project locally on your machine:
     npm install
     ```
 
-4. Generate your API key from [NewsAPI](https://newsapi.org). Replace my API key with yours in  ```.env.public``` file:
+4. Generate your API key from [NewsAPI](https://newsapi.org). Create a ```.env.public``` file outside src in project file & replace my API key with yours:
 
     ```bash
    REACT_APP_NEWS_API="......Paste your API key here......"
