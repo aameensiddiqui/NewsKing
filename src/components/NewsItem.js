@@ -27,10 +27,10 @@ export class NewsItem extends Component {
 									? "rgb(231 231 231)"
 									: "rgb(31 31 35)",
 						}}>
-						<h5 className="card-title">
+						<h5 className="card-title" style={{ fontSize: "20px" }}>
 							<b>{title}</b>
 						</h5>
-						<p className="card-text" style={{ fontSize: "15px" }}>
+						<p className="card-text" style={{ fontSize: "19px" }}>
 							{description}
 						</p>
 						<b>{author ? author : "Unknown"}</b>{" "}
