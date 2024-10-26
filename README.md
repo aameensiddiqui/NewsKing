@@ -18,16 +18,12 @@
 - **```NewsAPI```**: To fetch live news data.
 
 ## Screenshots
-![lightMode 6](https://github.com/user-attachments/assets/37ac8171-ba3c-43d8-825b-e9c439e1c2d7)
-![lightMode 1](https://github.com/user-attachments/assets/a530841d-b48a-4da8-9b6e-ef7bab9b182a)
-![lightMode 2](https://github.com/user-attachments/assets/d14227e6-dd0c-43cf-b76c-c471beb07b72)
-![lightMode 3](https://github.com/user-attachments/assets/43870f8f-de79-4dfe-a794-2db901320ecf)
-![lightMode 5](https://github.com/user-attachments/assets/f01524bc-e783-4208-832f-8bf112a1223e)
-![darkMode 5](https://github.com/user-attachments/assets/502e1475-087a-4163-9d66-cc400f6d31d8)
-![darkMode 6](https://github.com/user-attachments/assets/df75610a-986b-4769-97b6-64691c24240c)
-![darkMode 3](https://github.com/user-attachments/assets/043cde4a-7fa5-4f47-8bff-303185aa2a23)
-![darkMode 1](https://github.com/user-attachments/assets/5d0421d9-3403-4f1b-b921-02fe0b783e75)
-![darkMode 2](https://github.com/user-attachments/assets/f9ffcb6c-4676-401b-8978-7983a6b2f2ab)
+![lightMode 9](https://github.com/user-attachments/assets/1e37ef0c-cf46-40e4-8b33-2f7314a0f792)
+![lightMode 8](https://github.com/user-attachments/assets/a89ff665-d89a-415a-8d04-06c88bc94a4e)
+![lightMode 7](https://github.com/user-attachments/assets/1125292c-ef8d-458f-8bbd-3b7939078a49)
+![darkMode 7](https://github.com/user-attachments/assets/e6d23d17-b2e7-49fa-9a17-42105bc404f5)
+![darkMode 9](https://github.com/user-attachments/assets/c1c74302-e438-4871-adcb-61b8a615e160)
+![darkMode 8](https://github.com/user-attachments/assets/5e57aee5-9e86-4ba2-b474-b5eba368083c)
 
 
 
