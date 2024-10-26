@@ -6,9 +6,21 @@ export class Navbar extends Component {
 		return (
 			<nav
 				className={`navbar navbar-expand-lg fixed-top navbar-${this.props.theme} bg-${this.props.theme}`}
-				style={{ height: "60px", padding: "20px" }}>
-				<div className="container-fluid" style={{ fontSize: "18px" }}>
-					<Link className="navbar-brand" to="/" style={{ fontSize: "25px" }}>
+				style={{
+					height: "70px",
+					padding: "10px 30px",
+					boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+					borderRadius: "0 0 10px 10px",
+					background:
+						this.props.theme === "dark"
+							? "linear-gradient(145deg, #2a2a2a, #1a1a1a)"
+							: "linear-gradient(145deg, #ffffff, #f1f1f1)",
+				}}>
+				<div className="container-fluid" style={{ fontSize: "20px" }}>
+					<Link
+						className="navbar-brand"
+						to="/"
+						style={{ fontSize: "30px", fontWeight: "bold" }}>
 						NewsKing
 					</Link>
 					<button
@@ -74,9 +86,10 @@ export class Navbar extends Component {
 						alt="Toggle Theme"
 						onClick={this.props.toggleTheme}
 						style={{
-							width: "40px",
-							height: "40px",
+							width: "35px",
+							height: "35px",
 							cursor: "pointer",
+							marginLeft: "15px",
 						}}
 					/>
 				</div>
