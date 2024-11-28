@@ -77,21 +77,6 @@ export default class App extends Component {
 							}
 						/>
 						<Route
-							path="/general"
-							element={
-								<News
-									key="general"
-									setProgress={this.setProgress}
-									apiKey={this.apiKey}
-									toggleTheme={this.toggleTheme}
-									theme={this.state.theme}
-									pageSize={15}
-									country="us"
-									category="general"
-								/>
-							}
-						/>
-						<Route
 							path="/health"
 							element={
 								<News
