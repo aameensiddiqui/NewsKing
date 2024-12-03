@@ -77,6 +77,6 @@ NewsKing/
 │   ├── App.js
 │   └── index.js
 ├── package.json
-├── .env.public
+├── .env.local
 └── README.md
 ```
